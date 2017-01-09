@@ -3,12 +3,11 @@ package simon;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import guiPratice.sampleGames.ClickableScreen;
 import guiPratice.components.Button;
 import guiPratice.components.TextLabel;
 import guiPratice.components.Visible;
-import guiPratice.sampleGames.ClickableScreen;
-import whackAMole.MoleInterface;
-import whackAMole.PlayerInterface;
+import guiPratice.components.Action;
 
 public class SimonScreenRichard extends ClickableScreen implements Runnable{
 
@@ -29,7 +28,54 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 
 	public void run() {
 		// TODO Auto-generated method stub
-		
+		label.setText("");
+	    nextRound();
+	}
+
+	private void nextRound() {
+		// TODO Auto-generated method stub
+		acceptingInput = false;
+		roundNumber++;
+		progress.setRound(roundNumber);
+		move.add(randomMove());
+		progress.setSequenceSize(move.size());
+		changeText("Simon's turn.");
+		label.setText("");
+		playSequence();
+		changeText("Your turn.");
+		label.setText("");
+		acceptingInput = true;
+		sequenceIndex = 0;
+	}
+
+	private void playSequence() {
+		// TODO Auto-generated method stub
+		ButtonInterfaceRichard b = null;
+		for(MoveInterfaceRichard m: move){
+			if(b!=null){
+				b.dim();
+			}
+			b = m.getButton();
+			b.highlight();
+			int sleepTime = (int) (1000 * (Math.pow(2, 1/roundNumber)));
+			try{
+				Thread.sleep(sleepTime);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		b.dim();
+	}
+
+	private void changeText(String text) {
+		// TODO Auto-generated method stub
+		try{
+			label.setText(text);
+			Thread.sleep(1000);
+		}
+		catch(InterruptedException e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -54,6 +100,13 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 		// TODO Auto-generated method stub
 		ButtonInterfaceRichard b;
 		//code that randomly selects a ButtonInterfaceX
+		int rand = (int) (Math.random() * button.length);
+		while(rand == lastSelectedButton)
+		{
+			rand = (int) (Math.random() * button.length);
+		}
+		b = button[rand];
+		lastSelectedButton = rand;
 		return getMove(b);//partner codes this part
 	}
 
@@ -73,9 +126,52 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 		for(int i = 0; i < numberOfButtons; i++){
 			button[i] = getAButton();
 			button[i].setColor(color[i]);
-			button[i].setY(250);
-			button[i].setY(500);
+			button[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
+			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
+			
+			final ButtonInterfaceRichard b = button[i];
+			
+			b.setAction(new Action(){
+				public void act(){
+					if(acceptingInput){
+						//when button is pressed
+						Thread blink = new Thread(new Runnable(){
+							//light da button
+							public void run(){
+								b.hightlight();
+								try{
+									Thread.sleep(800);
+								}
+								catch(InterruptedException e){
+									e.printStackTrace();
+								}
+								//dim is turning off the light
+								b.dim();
+							}
+							
+						});
+						blink.start();
+						
+						if (b == move.get(sequenceIndex).getButton()){
+							sequenceIndex++;
+						}else{
+							gameOver();
+							return;
+						}
+						if(sequenceIndex == move.size()){
+							Thread nextRound = new Thread(SimonScreenRichard.this);
+							nextRound.start();
+						}
+					}
+				}
+
+			});
+			viewObjects.add(button[i]);
 		}
+	}
+	private void gameOver() {
+		// TODO Auto-generated method stub
+		progress.gameOver();
 	}
 
 }
