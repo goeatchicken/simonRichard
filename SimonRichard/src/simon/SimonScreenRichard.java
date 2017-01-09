@@ -132,7 +132,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 			button[i] = getAButton();
 			button[i].setColor(color[i]);
 			button[i].setX(160 + (int)(100*Math.cos(i*2*Math.PI/(numberOfButtons))));
-			button[i].setX(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
+			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
 			
 			final ButtonInterfaceRichard b = button[i];
 			

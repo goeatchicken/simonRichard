@@ -18,4 +18,6 @@ public interface ButtonInterfaceRichard extends Clickable {
 	void highlight();
 
 	void setX(int i);
+
+	void setY(int i);
 }
