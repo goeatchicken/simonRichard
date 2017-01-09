@@ -9,10 +9,6 @@ public interface ButtonInterfaceRichard extends Clickable {
 
 	void setColor(Color color);
 
-	void setX(int i);
-
-	void setY(int i);
-
 	void setAction(Action a);
 
 	void hightlight();
@@ -20,4 +16,6 @@ public interface ButtonInterfaceRichard extends Clickable {
 	void dim();
 
 	void highlight();
+
+	void setX(int i);
 }
