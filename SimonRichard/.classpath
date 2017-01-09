@@ -5,5 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/Student 8/Desktop/GUI.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Richard/Desktop/GUI_home.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Richard/Desktop/GUI_home2.jar"/>
+	<classpathentry kind="lib" path="src/simon/GUI2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
