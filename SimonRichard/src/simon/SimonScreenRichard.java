@@ -112,7 +112,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 
 	private MoveInterfaceRichard getMove(ButtonInterfaceRichard b) {
 		// TODO Auto-generated method stub
-		return null;
+		return new MoveWendy(b);
 	}
 
 	private ProgressInterfaceRichard getProgress() {
