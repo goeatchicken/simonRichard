@@ -7,22 +7,16 @@ import guiPratice.components.Component;
 
 public class ProgressWendy extends Component implements ProgressInterfaceRichard {
 	
-	private String round;
-	private int size;
+	private int roundNum;
+	private int sizeNum;
 	private boolean gameOver;
-	private int x;
-	private int y;
-	private int w;
-	private int h;
+	
 	
 
-	public ProgressWendy(int x, int y, int w, int h) {
-		super(x, y, w, h);
+	public ProgressWendy() {
+		super(30, 30, 150, 70);
 		// TODO Auto-generated constructor stub
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
+
 	}
 
 	@Override
@@ -35,14 +29,14 @@ public class ProgressWendy extends Component implements ProgressInterfaceRichard
 	@Override
 	public void setRound(int x) {
 		// TODO Auto-generated method stub
-		round = "Round " + x;
+		roundNum = x;
 		update();
 	}
 
 	@Override
 	public void setSequenceSize(int x) {
 		// TODO Auto-generated method stub
-		size = x;
+		sizeNum = x;
 		update();
 	}
 
@@ -51,9 +45,22 @@ public class ProgressWendy extends Component implements ProgressInterfaceRichard
 		// TODO Auto-generated method stub
 		if(gameOver)
 		{
-			g.setColor(Color.BLACK);
-			g.drawString("Game Over", x +10, y+10);
+			g.setColor(Color.black);
+			g.fillRect(0, 0, 300, 50);
+			g.setColor(Color.white);
+			g.drawString("Game Over", 10, 20);
+			g.drawString("Round " + roundNum, 10, 30);
+			g.drawString("Size " + sizeNum, 10, 40);
 		}
+		else
+		{
+			g.setColor(Color.white);
+			g.fillRect(0, 0, 300, 50);
+			g.setColor(Color.black);
+			g.drawString("Round " + roundNum, 10, 30);
+			g.drawString("Size " + sizeNum, 10, 40);
+		}
+		
 	}
 
 }

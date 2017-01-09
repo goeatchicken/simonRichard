@@ -119,7 +119,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 		/**
 		Placeholder until partner finishes implementation of ProgressInterface
 		 */
-		return new ProgressWendy(0,0,200,100);
+		return new ProgressWendy();
 	}
 
 	private void addButtons() {
@@ -135,7 +135,6 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 			button[i].setY(200 - (int)(100*Math.sin(i*2*Math.PI/(numberOfButtons))));
 			
 			final ButtonInterfaceRichard b = button[i];
-			
 			b.setAction(new Action(){
 				public void act(){
 					if(acceptingInput){
