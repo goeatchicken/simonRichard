@@ -11,7 +11,6 @@ public interface ButtonInterfaceRichard extends Clickable {
 
 	void setAction(Action a);
 
-	void hightlight();
 
 	void dim();
 

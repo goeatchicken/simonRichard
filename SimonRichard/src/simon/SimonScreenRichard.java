@@ -119,7 +119,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 		/**
 		Placeholder until partner finishes implementation of ProgressInterface
 		 */
-		return null;
+		return new ProgressWendy(0,0,200,100);
 	}
 
 	private void addButtons() {
@@ -143,7 +143,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 						Thread blink = new Thread(new Runnable(){
 							//light da button
 							public void run(){
-								b.hightlight();
+								b.highlight();
 								try{
 									Thread.sleep(800);
 								}
@@ -175,7 +175,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 		}
 	}
 	private ButtonInterfaceRichard getAButton() {
-		return null;
+		return new ButtonWendy();
 	}
 
 	private void gameOver() {
