@@ -14,7 +14,7 @@ public class ProgressWendy extends Component implements ProgressInterfaceRichard
 	
 
 	public ProgressWendy() {
-		super(30, 30, 150, 70);
+		super(100, 30, 150, 70);
 		// TODO Auto-generated constructor stub
 
 	}
