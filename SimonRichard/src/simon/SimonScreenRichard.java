@@ -160,6 +160,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 							sequenceIndex++;
 						}else{
 							gameOver();
+							changeText("You went up to round " + roundNumber);
 							return;
 						}
 						if(sequenceIndex == move.size()){
