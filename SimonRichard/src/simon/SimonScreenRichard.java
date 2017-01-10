@@ -161,6 +161,7 @@ public class SimonScreenRichard extends ClickableScreen implements Runnable{
 						}else{
 							gameOver();
 							changeText("You went up to round " + roundNumber);
+							acceptingInput = false;
 							return;
 						}
 						if(sequenceIndex == move.size()){
