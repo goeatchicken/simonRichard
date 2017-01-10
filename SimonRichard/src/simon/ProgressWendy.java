@@ -54,7 +54,7 @@ public class ProgressWendy extends Component implements ProgressInterfaceRichard
 		}
 		else
 		{
-			g.setColor(Color.white);
+			g.setColor(Color.green);
 			g.fillRect(0, 0, 300, 50);
 			g.setColor(Color.black);
 			g.drawString("Round " + roundNum, 10, 30);
