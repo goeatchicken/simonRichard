@@ -12,9 +12,9 @@ public class ButtonWendy extends Component implements ButtonInterfaceRichard {
 	private Action action;
 	private Color col;
 	boolean highlight;
+	private Color displayColor;
 	private static int w = 50;
 	private static int h = 50;
-	private Color displayColor;
 
 	public ButtonWendy() {
 		super(0, 0, w, h);
@@ -59,7 +59,10 @@ public class ButtonWendy extends Component implements ButtonInterfaceRichard {
 	@Override
 	public void highlight() {
 		// TODO Auto-generated method stub
-		if(col != null) displayColor = col;
+		if(col != null) 
+		{
+			displayColor = col;
+		}
 		highlight = true;
 		update();
 	}
@@ -69,14 +72,19 @@ public class ButtonWendy extends Component implements ButtonInterfaceRichard {
 		// TODO Auto-generated method stub
 		g.setColor(Color.black);
 		g.drawOval(0, 0, w, h);
-		if(displayColor != null) g.setColor(displayColor);
-		else g.setColor(Color.gray);
+		if(displayColor != null)
+		{
+			g.setColor(displayColor);
+		}
+		else 
+		{
+			g.setColor(Color.gray);
+		}
 		if(highlight)
 		{
 			g.setColor(col);
 			g.fillOval(0, 0, w, w);
 			g.setColor(Color.white);
-
 		}
 		else
 		{
